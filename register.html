@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="Style.css?ver=1.1">
+</head>
+<body>
+    <section>
+    <div class="Contenedor">
+        <h1><ins>Registrarse</ins></h1>
+        <br>
+        <form id="registroForm" action="register.php" method="POST" onsubmit="return validarRegistro()">
+
+            <label for="">
+                <img width="25px" src="User.svg" alt="">
+                Nombre
+            </label>
+            <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+            <label for="">
+                <img width="25px" src="Key.svg" alt="">
+                Contraseña
+            </label>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            
+            <label for="">
+                <img width="25px" src="User.svg" alt="">
+                Correo
+            </label>
+            <input type="text" id="email" name="email" placeholder="Correo electrónico" required>
+            <label for="">
+                <img width="25px" src="User.svg" alt="">
+                Edad
+            </label>
+            <input type="password" id="edad" name="edad" placeholder="Edad" min="18" required>
+            
+            
+            <input type="submit" class="button" value="Registrarse">
+            <a href="login.html" class="Boton_Ingresar">
+            Ingresar
+            </a>
+        </form>
+    </div>
+</section>
+    
+
+    <script>
+        function validarRegistro() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const edad = document.getElementById('edad').value;
+            const errorDiv = document.getElementById('error');
+
+            if (password.length < 6) {
+                errorDiv.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                return false;
+            }
+            if (!email.includes('@')) {
+                errorDiv.textContent = 'Correo inválido.';
+                return false;
+            }
+            if (edad < 18) {
+                errorDiv.textContent = 'Debes ser mayor de 18 años.';
+                return false;
+            }
+            if (username.length < 3) {
+                errorDiv.textContent = 'El nombre de usuario debe tener al menos 3 caracteres.';
+                return false;
+            }
+            errorDiv.textContent = '';
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="Style.css?ver=1.1">
+</head>
+<body>
+    <section>
+    <div class="Contenedor">
+        <h1><ins>Iniciar Sesión</ins></h1>
+        <br>
+        <form id="loginForm" action="login.php" method="POST" onsubmit="return validarLogin()">
+            <label for="">
+                <img width="25px" src="User.svg" alt="">
+                Correo
+            </label>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+            <label for="">
+                <img width="25px" src="Key.svg" alt="">
+                Contraseña
+            </label>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <button class="button">
+                Ingresar
+            </button>
+            <a href="register.html" class="button">
+                Registrarse
+            </a>
+        </form>
+    </div>
+</section>
+   
+
+    <script>
+        function validarLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+
+            if (!email.includes('@')) {
+                errorDiv.textContent = 'Correo inválido.';
+                return false;
+            }
+            if (password.length < 6) {
+                errorDiv.textContent = 'Contraseña incorrecta o muy corta.';
+                return false;
+            }
+            errorDiv.textContent = '';
+            return true;
+        }
+    </script>
+</body>
+</html>
