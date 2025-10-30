@@ -13,10 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        header("Location: dashboard.php");  
-        exit();
+
+        // Alerta de éxito con redirección
+        echo "
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+<script>
+alert('Login correcto');
+</script>";
+exit();
+
     } else {
-        echo "<script>alert('Correo o contraseña incorrectos.'); window.location='login.html';</script>";
+        // Alerta de error
+        echo "<script>alert('Error en iniciar sesion!'); window.location='login.html';</script>";
+        exit();
     }
 }
 ?>

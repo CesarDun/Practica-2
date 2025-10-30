@@ -11,7 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute([$username, $password, $email, $edad])) {
         echo "<script>alert('Registro exitoso!'); window.location='login.html';</script>";
     } else {
-        echo "<script>alert('Error: Usuario o email ya existe.');</script>";
+        echo "
+<script>alert('Registro exitoso!'); window.location='login.html';</script>";
+exit();
+
     }
 }
 ?>
